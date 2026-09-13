@@ -3,240 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Roastery & Pantry Menu</title>
+    <title>Golden Crust Pizzeria Menu</title>
     <style>
-        body {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 16px;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            min-height: 100vh;
-            background: #fdfbf7;
-            color: #1c1917;
+        :root {
+            --bg: #fdfbf7;
+            --text: #1c1917;
+            --accent: #b45309;
+            --card: #ffffff;
+            --border: #f3ede2;
+            --sub: #78716c;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 24px;
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            max-width: 480px; 
+            margin: 0 auto; 
+            padding: 16px 16px 40px 16px; 
+            background: var(--bg); 
+            color: var(--text); 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+            min-height: 100vh; 
         }
 
-        .business-name {
-            font-size: 22px;
-            font-weight: 700;
-            margin: 0;
-            color: #1c1917;
+        .header { text-align: center; margin-bottom: 22px; }
+        .header h1 { font-size: 22px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+        .header p { font-size: 13px; color: var(--sub); line-height: 1.4; }
+
+        .lang-switch { display: flex; justify-content: center; gap: 8px; margin-bottom: 20px; }
+        .lang-switch button { 
+            padding: 6px 18px; 
+            border-radius: 20px; 
+            font-weight: 600; 
+            font-size: 13px; 
+            border: 1px solid var(--border); 
+            cursor: pointer; 
+            transition: all 0.2s;
         }
 
-        .tagline {
-            font-size: 13px;
-            color: rgba(28, 25, 23, 0.75);
-            margin: 4px 0 16px 0;
-            line-height: 1.4;
+        .category-title { 
+            font-size: 15px; 
+            font-weight: 700; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            margin: 24px 0 12px 0; 
+            border-bottom: 1px solid var(--border); 
+            padding-bottom: 4px; 
         }
 
-        .contact-info {
-            text-align: center;
-            font-size: 13px;
-            margin-bottom: 20px;
-            color: #1c1917;
+        .item-box { 
+            background: var(--card); 
+            border: 1px solid var(--border); 
+            border-radius: 12px; 
+            padding: 14px; 
+            margin-bottom: 12px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
         }
 
-        .lang-switch {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
+        .item-row { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; font-size: 15px; font-weight: 600; }
+        .item-price { font-weight: 700; color: var(--accent); white-space: nowrap; direction: ltr; }
+        .item-desc { font-size: 13px; color: var(--sub); line-height: 1.4; margin-top: 5px; }
 
-        .lang-switch button {
-            padding: 6px 18px;
-            border-radius: 20px;
-            font-weight: 600;
-            font-size: 13px;
-            border: 1px solid #d1d5db;
-            cursor: pointer;
-            transition: all 0.2s ease;
+        .phone-link { 
+            display: inline-block; 
+            margin-top: 8px; 
+            font-size: 13px; 
+            color: var(--accent); 
+            text-decoration: none; 
+            direction: ltr !important; 
+            unicode-bidi: embed; 
         }
-
-        .category-title {
-            font-size: 16px;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-top: 24px;
-            margin-bottom: 12px;
-            border-bottom: 1px solid #e5e7eb;
-            padding-bottom: 6px;
-            letter-spacing: 0.05em;
-            color: #92400e; /* Amber/Gold accent */
-        }
-
-        .menu-card {
-            background: #ffffff;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 12px;
-            padding: 14px;
-            margin-bottom: 10px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
-        }
-
-        .item-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-size: 15px;
-            font-weight: 600;
-        }
-
-        .item-price {
-            font-weight: 700;
-            white-space: nowrap;
-            direction: ltr;
-            color: #1c1917;
-        }
-
-        .item-description {
-            font-size: 13px;
-            color: #6b7280;
-            line-height: 1.4;
-            margin-top: 5px;
-        }
+        
+        .footer-info { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border); }
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1 class="business-name">The Roastery & Pantry</h1>
-        <p class="tagline">Artisan micro-roastery, slow batch coffee, and all-day sourdough brunch prepared with fresh regional ingredients.</p>
-        <div class="contact-info">
-            <bdi>+441204667788</bdi>
-        </div>
-    </div>
-
     <div class="lang-switch">
-        <button id="btn-en" onclick="setLang('en')" style="background:#2563eb; color:#fff;">English</button>
-        <button id="btn-ar" onclick="setLang('ar')" style="background:#fff; color:#374151;">العربية</button>
+        <button id="btn-en" onclick="setLang('en')" style="background:var(--accent); color:#ffffff;">English</button>
+        <button id="btn-ar" onclick="setLang('ar')" style="background:var(--card); color:var(--text);">العربية</button>
     </div>
 
-    <!-- English Menu -->
+    <!-- English Section -->
     <div id="section-en" dir="ltr">
-        <div class="category-title">Specialty Brews</div>
+        <header class="header">
+            <h1>Golden Crust Pizzeria</h1>
+            <p>Artisanal wood-fired pizzas and fresh Italian sides.</p>
+            <bdi class="phone-link">+1-555-0123</bdi>
+        </header>
+
+        <div class="category-title">Pizzas</div>
         
-        <div class="menu-card">
+        <div class="item-box">
             <div class="item-row">
-                <span>Batch Filter Coffee</span>
-                <span class="item-price">£3.40</span>
+                <span>Margherita</span>
+                <span class="item-price">$14</span>
             </div>
-            <div class="item-description">Daily rotating single-origin bean brewed on Moccamaster, notes of milk chocolate and plum.</div>
+            <p class="item-desc">Fresh mozzarella, basil, tomato sauce.</p>
         </div>
 
-        <div class="menu-card">
+        <div class="item-box">
             <div class="item-row">
-                <span>Oat Flat White</span>
-                <span class="item-price">£3.90</span>
+                <span>Spicy Pepperoni</span>
+                <span class="item-price">$16</span>
             </div>
-            <div class="item-description">Double origin espresso paired with textured Minor Figures organic oat milk.</div>
+            <p class="item-desc">Italian pepperoni, chili flakes, honey.</p>
         </div>
 
-        <div class="category-title">Sourdough Brunch</div>
+        <div class="category-title">Sides</div>
 
-        <div class="menu-card">
+        <div class="item-box">
             <div class="item-row">
-                <span>Smashed Hass Avocado</span>
-                <span class="item-price">£8.80</span>
+                <span>Garlic Knots</span>
+                <span class="item-price">$6</span>
             </div>
-            <div class="item-description">Toasted seeded sourdough, crushed avocado, crumbled feta, chili flakes, and toasted pumpkin seeds.</div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-row">
-                <span>Smoked Salmon & Poached Eggs</span>
-                <span class="item-price">£10.50</span>
-            </div>
-            <div class="item-description">Hot-smoked Scottish salmon, two free-range poached eggs, and lemon hollandaise on brioche.</div>
-        </div>
-
-        <div class="category-title">Artisan Bakes</div>
-
-        <div class="menu-card">
-            <div class="item-row">
-                <span>Cardamom & Cinnamon Bun</span>
-                <span class="item-price">£3.50</span>
-            </div>
-            <div class="item-description">Swedish-style braided bun dusted with raw demerara sugar and freshly crushed green cardamom.</div>
+            <p class="item-desc">Served with marinara.</p>
         </div>
     </div>
 
-    <!-- Arabic Menu -->
+    <!-- Arabic Section -->
     <div id="section-ar" dir="rtl" style="display:none;">
-        <div class="category-title">القهوة المختصة</div>
+        <header class="header">
+            <h1>جولدن كرست بيتزا</h1>
+            <p>بيتزا حرفية مطبوخة على الحطب ومقبلات إيطالية طازجة.</p>
+            <bdi class="phone-link">+1-555-0123</bdi>
+        </header>
+
+        <div class="category-title">بيتزا</div>
         
-        <div class="menu-card">
+        <div class="item-box">
             <div class="item-row">
-                <span>قهوة اليوم المقطرة</span>
-                <span class="item-price">£3.40</span>
+                <span>مارغريتا</span>
+                <span class="item-price">$14</span>
             </div>
-            <div class="item-description">محصول مختص يتم تحضيره يومياً بإيحاءات الشوكولاتة بالحليب والخوخ.</div>
+            <p class="item-desc">موزاريلا طازجة، ريحان، صلصة طماطم.</p>
         </div>
 
-        <div class="menu-card">
+        <div class="item-box">
             <div class="item-row">
-                <span>فلات وايت بحليب الشوفان</span>
-                <span class="item-price">£3.90</span>
+                <span>بيبيروني حار</span>
+                <span class="item-price">$16</span>
             </div>
-            <div class="item-description">دبل إسبريسو غني مع حليب شوفان عضوي مبخر بقوام مخملي.</div>
+            <p class="item-desc">بيبيروني إيطالي، رقائق فلفل، عسل.</p>
         </div>
 
-        <div class="category-title">فطور الساوردو الحرفي</div>
+        <div class="category-title">جانبيات</div>
 
-        <div class="menu-card">
+        <div class="item-box">
             <div class="item-row">
-                <span>توست الأفوكادو المهروس</span>
-                <span class="item-price">£8.80</span>
+                <span>عقد الثوم</span>
+                <span class="item-price">$6</span>
             </div>
-            <div class="item-description">خبز ساوردو بالحبوب محمص مع أفوكادو طازج، جبن فيتا، رقائق فلفل، وبذور اليقطين المحمصة.</div>
-        </div>
-
-        <div class="menu-card">
-            <div class="item-row">
-                <span>سلمون مدخن وبيض مسلوق</span>
-                <span class="item-price">£10.50</span>
-            </div>
-            <div class="item-description">سلمون اسكتلندي مدخن على الحار، بيضتان بلديتان، وصلصة الهولنديز بالليمون على خبز البريوش.</div>
-        </div>
-
-        <div class="category-title">المخبوزات الحرفية</div>
-
-        <div class="menu-card">
-            <div class="item-row">
-                <span>فطيرة الهيل والقرفة</span>
-                <span class="item-price">£3.50</span>
-            </div>
-            <div class="item-description">لفائف سويدية طازجة بنكهة الهيل الأخضر الطازج وسكر الديميرارا البني.</div>
+            <p class="item-desc">تقدم مع صلصة المارينارا.</p>
         </div>
     </div>
+
+    <footer class="footer-info">
+        <p style="font-size: 12px; color: var(--sub);">© 2023 Golden Crust Pizzeria</p>
+    </footer>
 
     <script>
-       function setLang(lang) {
-         const secEn = document.getElementById('section-en');
-         const secAr = document.getElementById('section-ar');
-         const btnEn = document.getElementById('btn-en');
-         const btnAr = document.getElementById('btn-ar');
-         if (lang === 'ar') {
-           secEn.style.display = 'none';
-           secAr.style.display = 'block';
-           btnAr.style.background = '#2563eb';
-           btnAr.style.color = '#fff';
-           btnEn.style.background = '#fff';
-           btnEn.style.color = '#374151';
-         } else {
-           secAr.style.display = 'none';
-           secEn.style.display = 'block';
-           btnEn.style.background = '#2563eb';
-           btnEn.style.color = '#fff';
-           btnAr.style.background = '#fff';
-           btnAr.style.color = '#374151';
-         }
-       }
+        function setLang(l) {
+            var e = document.getElementById('section-en');
+            var a = document.getElementById('section-ar');
+            var be = document.getElementById('btn-en');
+            var ba = document.getElementById('btn-ar');
+            
+            if (l === 'ar') {
+                e.style.display = 'none';
+                a.style.display = 'block';
+                ba.style.background = 'var(--accent)';
+                ba.style.color = '#ffffff';
+                be.style.background = 'var(--card)';
+                be.style.color = 'var(--text)';
+            } else {
+                a.style.display = 'none';
+                e.style.display = 'block';
+                be.style.background = 'var(--accent)';
+                be.style.color = '#ffffff';
+                ba.style.background = 'var(--card)';
+                ba.style.color = 'var(--text)';
+            }
+        }
     </script>
 </body>
-</html>
+</html></html>
