@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Roastery & Pantry Menu</title>
+    <style>
+        body {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 16px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            min-height: 100vh;
+            background: #fdfbf7;
+            color: #1c1917;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .business-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            color: #1c1917;
+        }
+
+        .tagline {
+            font-size: 13px;
+            color: rgba(28, 25, 23, 0.75);
+            margin: 4px 0 16px 0;
+            line-height: 1.4;
+        }
+
+        .contact-info {
+            text-align: center;
+            font-size: 13px;
+            margin-bottom: 20px;
+            color: #1c1917;
+        }
+
+        .lang-switch {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .lang-switch button {
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 13px;
+            border: 1px solid #d1d5db;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .category-title {
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-top: 24px;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 6px;
+            letter-spacing: 0.05em;
+            color: #92400e; /* Amber/Gold accent */
+        }
+
+        .menu-card {
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .item-price {
+            font-weight: 700;
+            white-space: nowrap;
+            direction: ltr;
+            color: #1c1917;
+        }
+
+        .item-description {
+            font-size: 13px;
+            color: #6b7280;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1 class="business-name">The Roastery & Pantry</h1>
+        <p class="tagline">Artisan micro-roastery, slow batch coffee, and all-day sourdough brunch prepared with fresh regional ingredients.</p>
+        <div class="contact-info">
+            <bdi>+441204667788</bdi>
+        </div>
+    </div>
+
+    <div class="lang-switch">
+        <button id="btn-en" onclick="setLang('en')" style="background:#2563eb; color:#fff;">English</button>
+        <button id="btn-ar" onclick="setLang('ar')" style="background:#fff; color:#374151;">العربية</button>
+    </div>
+
+    <!-- English Menu -->
+    <div id="section-en" dir="ltr">
+        <div class="category-title">Specialty Brews</div>
+        
+        <div class="menu-card">
+            <div class="item-row">
+                <span>Batch Filter Coffee</span>
+                <span class="item-price">£3.40</span>
+            </div>
+            <div class="item-description">Daily rotating single-origin bean brewed on Moccamaster, notes of milk chocolate and plum.</div>
+        </div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>Oat Flat White</span>
+                <span class="item-price">£3.90</span>
+            </div>
+            <div class="item-description">Double origin espresso paired with textured Minor Figures organic oat milk.</div>
+        </div>
+
+        <div class="category-title">Sourdough Brunch</div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>Smashed Hass Avocado</span>
+                <span class="item-price">£8.80</span>
+            </div>
+            <div class="item-description">Toasted seeded sourdough, crushed avocado, crumbled feta, chili flakes, and toasted pumpkin seeds.</div>
+        </div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>Smoked Salmon & Poached Eggs</span>
+                <span class="item-price">£10.50</span>
+            </div>
+            <div class="item-description">Hot-smoked Scottish salmon, two free-range poached eggs, and lemon hollandaise on brioche.</div>
+        </div>
+
+        <div class="category-title">Artisan Bakes</div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>Cardamom & Cinnamon Bun</span>
+                <span class="item-price">£3.50</span>
+            </div>
+            <div class="item-description">Swedish-style braided bun dusted with raw demerara sugar and freshly crushed green cardamom.</div>
+        </div>
+    </div>
+
+    <!-- Arabic Menu -->
+    <div id="section-ar" dir="rtl" style="display:none;">
+        <div class="category-title">القهوة المختصة</div>
+        
+        <div class="menu-card">
+            <div class="item-row">
+                <span>قهوة اليوم المقطرة</span>
+                <span class="item-price">£3.40</span>
+            </div>
+            <div class="item-description">محصول مختص يتم تحضيره يومياً بإيحاءات الشوكولاتة بالحليب والخوخ.</div>
+        </div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>فلات وايت بحليب الشوفان</span>
+                <span class="item-price">£3.90</span>
+            </div>
+            <div class="item-description">دبل إسبريسو غني مع حليب شوفان عضوي مبخر بقوام مخملي.</div>
+        </div>
+
+        <div class="category-title">فطور الساوردو الحرفي</div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>توست الأفوكادو المهروس</span>
+                <span class="item-price">£8.80</span>
+            </div>
+            <div class="item-description">خبز ساوردو بالحبوب محمص مع أفوكادو طازج، جبن فيتا، رقائق فلفل، وبذور اليقطين المحمصة.</div>
+        </div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>سلمون مدخن وبيض مسلوق</span>
+                <span class="item-price">£10.50</span>
+            </div>
+            <div class="item-description">سلمون اسكتلندي مدخن على الحار، بيضتان بلديتان، وصلصة الهولنديز بالليمون على خبز البريوش.</div>
+        </div>
+
+        <div class="category-title">المخبوزات الحرفية</div>
+
+        <div class="menu-card">
+            <div class="item-row">
+                <span>فطيرة الهيل والقرفة</span>
+                <span class="item-price">£3.50</span>
+            </div>
+            <div class="item-description">لفائف سويدية طازجة بنكهة الهيل الأخضر الطازج وسكر الديميرارا البني.</div>
+        </div>
+    </div>
+
+    <script>
+       function setLang(lang) {
+         const secEn = document.getElementById('section-en');
+         const secAr = document.getElementById('section-ar');
+         const btnEn = document.getElementById('btn-en');
+         const btnAr = document.getElementById('btn-ar');
+         if (lang === 'ar') {
+           secEn.style.display = 'none';
+           secAr.style.display = 'block';
+           btnAr.style.background = '#2563eb';
+           btnAr.style.color = '#fff';
+           btnEn.style.background = '#fff';
+           btnEn.style.color = '#374151';
+         } else {
+           secAr.style.display = 'none';
+           secEn.style.display = 'block';
+           btnEn.style.background = '#2563eb';
+           btnEn.style.color = '#fff';
+           btnAr.style.background = '#fff';
+           btnAr.style.color = '#374151';
+         }
+       }
+    </script>
+</body>
+</html>
